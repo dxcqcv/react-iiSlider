@@ -4,8 +4,8 @@ import SliderList from '../components/SliderList.js'
 
 const mapStateToProps = state => {
   return {
-    show: state.show,
-    current: state.current
+    distance: state.distance,
+    sliders: state.sliders
   }
 }
 

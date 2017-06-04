@@ -4,7 +4,7 @@ import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import goto from './reducers'
 import App from './components/App'
-import Demo from './components/TestMotion'
+//import Demo from './components/TestMotion'
 
 import './styles/style.styl'
 
@@ -15,11 +15,11 @@ window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 
 render(
-  /*
+  
   <Provider store={store}>
     <App></App>
   </Provider>,
-  */
-  <Demo></Demo>,
+  
+  //<Demo></Demo>,
   document.getElementById('root')
 )

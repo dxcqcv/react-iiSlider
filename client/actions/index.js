@@ -18,9 +18,9 @@ export const selector = show => {
   }
 }
 
-export const updateCurrent = current => {
+export const updateCurrent = () => {
   return {
     type: 'UPDATECURRENT',
-    current
+    //current
   }
 }
