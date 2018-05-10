@@ -1,13 +1,15 @@
-import Slider from './Slider'
-import {updateCurrent } from '../actions'
 import React from 'react'
-import {Motion, spring} from 'react-motion'
+import MoveSliderList from './MoveSliderList'
 
-//class SliderList extends Component {
-  //constructor(props) 
-//}
 
-const SliderList = ({/*show, current,*/distance,sliders,dispatch}) => {
+// class sliderlist extends component {
+//   constructor(props) {
+//     super(props)
+//   } 
+
+// }
+
+const SliderList = ({/*show, current,*/distance,sliders,updateCurrent}) => {
 
   //const N = 4
   //let sliders = [...Array(N+1).keys()].slice(1)
@@ -20,22 +22,7 @@ const SliderList = ({/*show, current,*/distance,sliders,dispatch}) => {
 
 return (
   <div>
-    <Motion 
-      key={sliders[1]} 
-      defaultStyle={{x:0}} 
-      style={{x:spring(distance)}}
-      onRest={()=>dispatch(updateCurrent)}>
-      {({x}) =>
-        <ul className='slider' style={{left:`${x}px`}}> 
-          {sliders.map(slider => 
-            <Slider
-              key={slider}
-              slider={slider}
-            ></Slider>
-          )}
-        </ul>
-      }
-    </Motion>
+    <MoveSliderList distance={distance} sliders={sliders} updateCurrent={updateCurrent} ></MoveSliderList>
   </div>
 )} 
 

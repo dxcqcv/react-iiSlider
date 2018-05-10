@@ -12,7 +12,7 @@ const goto = (state = {/*current:1,*/show:1,moveNow:false, sliders:[4,1,2,3],dis
           else return -800
         },
         get sliders(){
-          return prepareSliders.call(this)
+          return prepareSliders(state)
         },
         moveNow: true
       })
@@ -21,11 +21,7 @@ const goto = (state = {/*current:1,*/show:1,moveNow:false, sliders:[4,1,2,3],dis
         show:++state.show > 4 ? 1 :state.show,
         get distance() {return 800},
         get sliders(){
-          //prepareSliders.call(this)
-          return (this.show > this.sliders[1]) 
-            ? reorderArray(this.sliders, this.show, 2) 
-            : reorderArray(this.sliders, this.show, 0)
-
+          return prepareSliders(state)
         },
         moveNow: true
       })
@@ -34,7 +30,7 @@ const goto = (state = {/*current:1,*/show:1,moveNow:false, sliders:[4,1,2,3],dis
         show:--state.show < 1 ? 4 :state.show,
         get distance() {return -800},
         get sliders(){
-          return prepareSliders.call(this)
+          return prepareSliders(state)
         },
         moveNow: true
       })
@@ -42,11 +38,11 @@ const goto = (state = {/*current:1,*/show:1,moveNow:false, sliders:[4,1,2,3],dis
       return Object.assign({},state,{
         get distance() {return 0},
         get sliders() {
-          if (this.moveNow !== false) {
+          if (state.moveNow !== false) {
             if(state.show > state.sliders[1]) {
-              return reorderArray(state.sliders, this.sliders[1], 0 )
+              return reorderArray(state.sliders, state.sliders[1], 0 )
             } else {
-              return reorderArray(state.sliders, this.sliders[1], this.sliders.length-1 )
+              return reorderArray(state.sliders, state.sliders[1], state.sliders.length-1 )
             }
           } 
         },
@@ -58,9 +54,9 @@ const goto = (state = {/*current:1,*/show:1,moveNow:false, sliders:[4,1,2,3],dis
   }
 }
 
-function prepareSliders() {
-  return (this.show > this.sliders[1]) 
-    ? reorderArray(this.sliders, this.show, 2) 
-    : reorderArray(this.sliders, this.show, 0)
+function prepareSliders(state) {
+  return (state.show > state.sliders[1]) 
+    ? reorderArray(state.sliders, state.show, 2) 
+    : reorderArray(state.sliders, state.show, 0)
 }
 export default goto 
